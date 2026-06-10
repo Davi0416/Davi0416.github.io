@@ -1,514 +1,296 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Davi Asafe &mdash; Backend &amp; Full-stack Developer</title>
-<meta name="description" content="Davi Asafe &mdash; desenvolvedor backend/full-stack. Portf&oacute;lio de projetos em Java, Python, TypeScript e mais.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Davi Asafe — Backend & IA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-<style>
-:root{
-  --bg:#0a0d12;--bg-1:#0d1117;--bg-2:#11161d;--bg-3:#161c25;
-  --line:rgba(140,160,190,.12);--line-2:rgba(140,160,190,.22);
-  --text:#e6edf3;--text-mute:#8b95a7;--text-dim:#5a6573;
-  --accent:#a3e635;--accent-2:#7c9eff;
-  --accent-soft:rgba(163,230,53,.12);--accent-line:rgba(163,230,53,.35);
-  --radius:6px;--radius-lg:12px;
-  --font-sans:"Geist",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
-  --font-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
-  --max:1240px;--gutter:clamp(20px,4vw,48px);
-}
-*{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-html,body{background:var(--bg-1);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;}
-body{min-height:100vh;background:radial-gradient(1200px 600px at 80% -10%,rgba(124,158,255,.06),transparent 60%),radial-gradient(900px 500px at 0% 30%,rgba(163,230,53,.04),transparent 60%),var(--bg-1);overflow-x:hidden;}
-::selection{background:var(--accent);color:#0a0d12;}
-a{color:inherit;text-decoration:none;}
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;}
-img{max-width:100%;display:block;}
-.mono{font-family:var(--font-mono);font-weight:500;letter-spacing:.02em;}
-.eyebrow{font-family:var(--font-mono);font-size:13px;font-weight:500;color:var(--accent);letter-spacing:.04em;}
-.grid-bg{position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(to right,rgba(140,160,190,.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(140,160,190,.04) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse at 50% 30%,black 30%,transparent 80%);}
-.cursor-glow{position:fixed;width:600px;height:600px;pointer-events:none;z-index:-1;background:radial-gradient(circle,rgba(163,230,53,.06),transparent 60%);transform:translate(-50%,-50%);transition:opacity .3s;opacity:0;}
-.nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:18px var(--gutter);display:flex;align-items:center;justify-content:space-between;transition:backdrop-filter .3s,background-color .3s,border-color .3s;border-bottom:1px solid transparent;}
-.nav.scrolled{background:rgba(13,17,23,.7);backdrop-filter:blur(12px) saturate(140%);-webkit-backdrop-filter:blur(12px) saturate(140%);border-bottom-color:var(--line);}
-.brand{display:flex;align-items:center;gap:10px;font-family:var(--font-mono);font-weight:600;font-size:14px;letter-spacing:.02em;}
-.brand .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent);animation:pulse 2.4s infinite;}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
-.brand-name{color:var(--text);}
-.brand-name span{color:var(--accent);}
-.nav-links{display:flex;align-items:center;gap:28px;}
-.nav-links a{font-family:var(--font-mono);font-size:12.5px;color:var(--text-mute);letter-spacing:.04em;display:flex;gap:8px;align-items:center;transition:color .2s;position:relative;}
-.nav-links a .num{color:var(--accent);font-size:11px;}
-.nav-links a:hover{color:var(--text);}
-.nav-links a::after{content:"";position:absolute;left:0;bottom:-4px;height:1px;width:0;background:var(--accent);transition:width .25s ease;}
-.nav-links a:hover::after{width:100%;}
-.lang-toggle{display:flex;align-items:center;border:1px solid var(--line-2);border-radius:var(--radius);font-family:var(--font-mono);font-size:12px;overflow:hidden;}
-.lang-toggle button{padding:6px 10px;color:var(--text-mute);transition:background .2s,color .2s;}
-.lang-toggle button.active{background:var(--accent-soft);color:var(--accent);}
-@media(max-width:720px){.nav-links a:not(.cv-link){display:none;}}
-.side{position:fixed;bottom:0;width:40px;z-index:40;}
-.side::after{content:"";display:block;width:1px;height:90px;margin:20px auto 0;background:var(--text-mute);}
-.side.left{left:28px;}.side.right{right:28px;}
-.side ul{list-style:none;display:flex;flex-direction:column;align-items:center;gap:18px;}
-.side a{color:var(--text-mute);transition:color .2s,transform .2s;display:inline-flex;}
-.side a:hover{color:var(--accent);transform:translateY(-3px);}
-.side svg{width:18px;height:18px;}
-.side.right ul{writing-mode:vertical-rl;}
-.side.right a{font-family:var(--font-mono);font-size:12px;letter-spacing:.15em;padding:4px 0;}
-@media(max-width:1100px){.side{display:none;}}
-main{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);}
-.section{padding:110px 0 40px;position:relative;}
-.section-head{display:flex;align-items:center;gap:16px;margin-bottom:42px;}
-.section-head .num{font-family:var(--font-mono);color:var(--accent);font-size:18px;}
-.section-head h2{font-size:clamp(26px,3.4vw,34px);font-weight:700;letter-spacing:-.02em;white-space:nowrap;}
-.section-head .rule{flex:1;height:1px;background:linear-gradient(to right,var(--line-2),transparent);max-width:320px;}
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease;}
-.reveal.in{opacity:1;transform:translateY(0);}
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:80px;}
-.hero h1{font-size:clamp(44px,8vw,96px);line-height:.98;font-weight:800;letter-spacing:-.04em;color:var(--text);}
-.hero h1 .last{color:var(--text-mute);}
-.hero h2.role{font-size:clamp(28px,5vw,60px);line-height:1.05;font-weight:700;letter-spacing:-.03em;color:var(--text-mute);margin-top:12px;min-height:1.1em;}
-.hero h2 .typed{color:var(--text);}
-.hero h2 .caret{display:inline-block;width:3px;height:.85em;background:var(--accent);margin-left:4px;vertical-align:-10%;animation:blink 1s steps(2) infinite;}
-@keyframes blink{50%{opacity:0}}
-.hero .lede{margin-top:28px;max-width:580px;font-size:17px;color:var(--text-mute);line-height:1.7;}
-.hero .lede strong{color:var(--text);font-weight:500;}
-.hero .actions{margin-top:42px;display:flex;gap:14px;flex-wrap:wrap;}
-.btn{font-family:var(--font-mono);font-size:13.5px;padding:14px 22px;border-radius:var(--radius);border:1px solid var(--accent);color:var(--accent);display:inline-flex;align-items:center;gap:10px;transition:background .2s,transform .2s;}
-.btn:hover{background:var(--accent-soft);transform:translateY(-2px);}
-.btn.primary{background:var(--accent-soft);}
-.btn .arrow{transition:transform .2s;}
-.btn:hover .arrow{transform:translate(2px,-2px);}
-.btn-ghost{border-color:var(--line-2);color:var(--text-mute);}
-.btn-ghost:hover{color:var(--text);border-color:var(--text-mute);background:transparent;}
-.avail{display:inline-flex;align-items:center;gap:10px;padding:6px 12px 6px 10px;border:1px solid var(--accent-line);border-radius:999px;font-family:var(--font-mono);font-size:12px;color:var(--accent);background:var(--accent-soft);margin-bottom:28px;}
-.avail .pip{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(163,230,53,.18);animation:pulse 2.4s infinite;}
-.hero-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(24px,5vw,60px);align-items:center;}
-@media(max-width:980px){.hero-grid{grid-template-columns:1fr;}.terminal{display:none;}}
-.terminal{background:var(--bg-2);border:1px solid var(--line-2);border-radius:var(--radius-lg);font-family:var(--font-mono);font-size:13px;overflow:hidden;box-shadow:0 30px 80px -30px rgba(0,0,0,.6);}
-.term-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--bg-3);}
-.term-bar .dots{display:flex;gap:6px;}
-.term-bar .dots span{width:11px;height:11px;border-radius:50%;}
-.term-bar .dots span:nth-child(1){background:#ff5f57;}
-.term-bar .dots span:nth-child(2){background:#febc2e;}
-.term-bar .dots span:nth-child(3){background:#28c840;}
-.term-bar .file{margin-left:8px;color:var(--text-mute);font-size:12px;}
-.term-body{padding:18px 18px 22px;line-height:1.75;}
-.term-body .ln{display:block;}
-.tk-comment{color:var(--text-dim);}.tk-keyword{color:#ff7b72;}.tk-string{color:var(--accent);}
-.tk-num{color:var(--accent-2);}.tk-prop{color:#79c0ff;}.tk-fn{color:#d2a8ff;}.tk-punc{color:var(--text-mute);}
-.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(28px,5vw,64px);align-items:start;}
-@media(max-width:860px){.about-grid{grid-template-columns:1fr;}}
-.about-grid p{color:var(--text-mute);margin-bottom:16px;max-width:56ch;}
-.about-grid p strong{color:var(--text);font-weight:500;}
-.about-grid p a{color:var(--accent);border-bottom:1px dashed var(--accent-line);}
-.fact-table{border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;font-family:var(--font-mono);font-size:13px;background:var(--bg-2);}
-.fact-row{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line);}
-.fact-row:last-child{border-bottom:0;}
-.fact-row .k{color:var(--text-mute);text-transform:uppercase;letter-spacing:.08em;font-size:11px;}
-.fact-row .v{color:var(--text);}.fact-row .v.accent{color:var(--accent);}.fact-row .v.blue{color:var(--accent-2);}
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;}
-.skill{display:flex;align-items:center;gap:12px;padding:14px 16px;border:1px solid var(--line);border-radius:var(--radius);background:var(--bg-2);transition:transform .2s,border-color .2s,background .2s;font-family:var(--font-mono);font-size:13px;}
-.skill:hover{transform:translateY(-3px);border-color:var(--accent-line);background:var(--bg-3);}
-.skill i, .skill svg{font-size:22px;width:24px;height:24px;text-align:center;display:inline-block;flex-shrink:0;vertical-align:middle;}
-.skill .name{color:var(--text);}
-.skills-section{margin-bottom:32px;}
-.skills-section h3{font-family:var(--font-mono);font-weight:500;font-size:12px;color:var(--text-mute);letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px;padding-bottom:10px;border-bottom:1px dashed var(--line-2);}
-.featured{position:relative;display:grid;grid-template-columns:1.05fr 1fr;align-items:center;margin-bottom:80px;min-height:440px;}
-@media(max-width:980px){.featured{grid-template-columns:1fr;min-height:0;}}
-.feat-image{position:relative;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line-2);background:var(--bg-2);grid-column:1/2;grid-row:1/2;z-index:1;}
-.feat-image::after{content:"";position:absolute;inset:0;background:rgba(13,17,23,.55);mix-blend-mode:multiply;transition:background .3s;}
-.featured:hover .feat-image::after{background:rgba(13,17,23,.15);}
-.feat-image img{width:100%;height:100%;object-fit:cover;filter:saturate(.85) contrast(1.05);transition:transform .6s ease;}
-.featured:hover .feat-image img{transform:scale(1.03);}
-@media(min-width:980px){
-  .feat-content{grid-column:2/3;grid-row:1/2;z-index:2;text-align:right;}
-  .feat-text{background:var(--bg-3);border:1px solid var(--line-2);padding:24px 26px;border-radius:var(--radius-lg);box-shadow:0 30px 60px -30px rgba(0,0,0,.6);margin-left:-90px;position:relative;z-index:3;}
-  .feat-tags{justify-content:flex-end;}.feat-links{justify-content:flex-end;}
-}
-@media(max-width:980px){
-  .feat-content{grid-column:1/2;grid-row:1/2;align-self:end;padding:24px;background:linear-gradient(to top,rgba(13,17,23,.95) 30%,transparent);z-index:2;}
-  .feat-text{background:transparent;border:0;padding:0;box-shadow:none;}
-}
-.feat-eyebrow{margin-bottom:8px;}
-.feat-content h3{font-size:clamp(22px,2.6vw,30px);font-weight:700;letter-spacing:-.02em;margin-bottom:14px;color:var(--text);}
-.feat-content h3 a:hover{color:var(--accent);}
-.feat-content p{color:var(--text-mute);font-size:15px;line-height:1.7;margin-bottom:16px;}
-.feat-tags{display:flex;flex-wrap:wrap;gap:6px 14px;font-family:var(--font-mono);font-size:12px;color:var(--text-mute);margin-bottom:14px;}
-.feat-links{display:flex;gap:16px;}
-.feat-links a{color:var(--text-mute);transition:color .2s,transform .2s;}
-.feat-links a:hover{color:var(--accent);transform:translateY(-2px);}
-.feat-links svg{width:20px;height:20px;}
-.other-projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;}
-.proj-card{position:relative;background:var(--bg-2);border:1px solid var(--line);border-radius:var(--radius-lg);padding:28px 24px 22px;display:flex;flex-direction:column;min-height:260px;transition:transform .25s ease,border-color .25s ease;overflow:hidden;}
-.proj-card::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(400px circle at var(--mx,50%) var(--my,50%),rgba(163,230,53,.10),transparent 40%);opacity:0;transition:opacity .3s;}
-.proj-card:hover::before{opacity:1;}
-.proj-card:hover{transform:translateY(-4px);border-color:var(--accent-line);}
-.proj-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:28px;}
-.folder{width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:var(--accent);}
-.folder svg{width:36px;height:36px;}
-.proj-links{display:flex;gap:10px;}
-.proj-links span{color:var(--text-mute);display:inline-flex;}
-.proj-card h4{font-size:19px;font-weight:700;margin-bottom:10px;letter-spacing:-.01em;color:var(--text);}
-.proj-card p{color:var(--text-mute);font-size:14px;line-height:1.6;flex:1;margin-bottom:18px;}
-.proj-tags{display:flex;flex-wrap:wrap;gap:4px 12px;font-family:var(--font-mono);font-size:11.5px;color:var(--text-dim);}
-.contact{text-align:center;padding:130px 0 80px;max-width:640px;margin:0 auto;}
-.contact .eyebrow{display:block;margin-bottom:18px;}
-.contact h2{font-size:clamp(38px,5.5vw,64px);font-weight:800;letter-spacing:-.03em;margin-bottom:22px;}
-.contact p{color:var(--text-mute);font-size:17px;line-height:1.7;margin-bottom:36px;}
-.contact .btn{padding:16px 28px;font-size:14px;}
-footer{text-align:center;padding:30px var(--gutter) 24px;font-family:var(--font-mono);font-size:11.5px;color:var(--text-dim);}
-footer a{transition:color .2s;}
-footer a:hover{color:var(--accent);}
-footer .built{margin-top:4px;opacity:.6;}
-@media(max-width:600px){.hero{min-height:92vh;}.feat-text{padding:0 4px;}}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="grid-bg" aria-hidden="true"></div>
-<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
-<header class="nav" id="nav">
-  <a href="#" class="brand">
-    <span class="dot" aria-hidden="true"></span>
-    <span class="brand-name">davi<span>.</span>asafe</span>
-  </a>
-  <nav class="nav-links">
-    <a href="#about"><span class="num">01.</span><span data-i18n="nav.about">Sobre</span></a>
-    <a href="#skills"><span class="num">02.</span><span data-i18n="nav.skills">Skills</span></a>
-    <a href="#projects"><span class="num">03.</span><span data-i18n="nav.projects">Projetos</span></a>
-    <a href="#contact"><span class="num">04.</span><span data-i18n="nav.contact">Contato</span></a>
+<div class="noise"></div>
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<!-- ============ TOP BAR ============ -->
+<header class="topbar">
+  <a href="#top" class="brand"><span class="blip"></span>DAVI&nbsp;ASAFE</a>
+  <nav class="nav">
+    <a href="#sobre"    class="navlink"><span class="idx">01</span><span data-pt="Sobre"    data-en="About">Sobre</span></a>
+    <a href="#stack"    class="navlink"><span class="idx">02</span><span data-pt="Stack"    data-en="Stack">Stack</span></a>
+    <a href="#projetos" class="navlink"><span class="idx">03</span><span data-pt="Projetos" data-en="Work">Projetos</span></a>
+    <a href="#contato"  class="navlink"><span class="idx">04</span><span data-pt="Contato"  data-en="Contact">Contato</span></a>
+    <div class="lang">
+      <button data-lang="pt">PT</button>
+      <button data-lang="en">EN</button>
+    </div>
   </nav>
-  <div class="lang-toggle" role="tablist">
-    <button data-lang="pt" class="active" role="tab" aria-selected="true">PT</button>
-    <button data-lang="en" role="tab" aria-selected="false">EN</button>
-  </div>
 </header>
 
-<aside class="side left">
-  <ul>
-    <li><a href="https://github.com/Davi0416" target="_blank" rel="noopener" aria-label="GitHub">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2.16c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.27-1.69-1.27-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.69 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.17a10.93 10.93 0 015.74 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.25 5.65.41.36.78 1.07.78 2.16v3.2c0 .31.21.67.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg>
-    </a></li>
-    <li><a href="https://linkedin.com/in/davi-asafe-097572400" target="_blank" rel="noopener" aria-label="LinkedIn">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.27c-.97 0-1.75-.79-1.75-1.76s.78-1.75 1.75-1.75 1.75.78 1.75 1.75-.78 1.76-1.75 1.76zm12.5 11.27h-3v-5.6c0-1.34-.03-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96v5.7h-3v-10h2.88v1.37h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.6v5.59z"/></svg>
-    </a></li>
-    <li><a href="mailto:daviasafe8@gmail.com" aria-label="Email">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
-    </a></li>
-  </ul>
-</aside>
-<aside class="side right">
-  <ul><li><a href="mailto:daviasafe8@gmail.com">daviasafe8@gmail.com</a></li></ul>
-</aside>
+<!-- ============ HERO ============ -->
+<main id="top">
+<section class="hero">
+  <div class="hero-kick reveal">
+    <span class="tag avail"><b>●</b>&nbsp;<span data-pt="Disponível para estágio · Rio de Janeiro" data-en="Open to internships · Rio de Janeiro">Disponível para estágio · Rio de Janeiro</span></span>
+  </div>
+  <p class="hero-hi reveal d1" data-pt="Olá, meu nome é" data-en="Hi, my name is">Olá, meu nome é</p>
 
-<main>
-  <section class="hero" id="hero">
-    <div class="hero-grid">
+  <h1 class="hero-title reveal d1" aria-label="Davi Asafe — Backend Developer, Full-stack Developer, AI Engineering Specialist">
+    <span class="line name">Davi Asafe<span class="dot">.</span><span class="sqr" aria-hidden="true"></span></span>
+    <span class="line role-line"><span class="type-role">Backend Developer</span><span class="tcaret-bar" aria-hidden="true"></span></span>
+  </h1>
+
+  <div class="hero-grid">
+    <div class="reveal d2">
+      <p class="hero-lede">
+        <span
+          data-pt="Estudante de Engenharia de Software com ênfase em IA no Instituto Infnet (Rio de Janeiro). Construiu sistemas backend em Java e Python, e aplicações completas com React · TypeScript — do banco de dados ao deploy."
+          data-en="Software Engineering student focused on AI at Instituto Infnet (Rio de Janeiro). Built backend systems in Java and Python, and full applications with React · TypeScript — from database to deploy.">Estudante de Engenharia de Software com ênfase em IA no Instituto Infnet (Rio de Janeiro). Construiu sistemas backend em Java e Python, e aplicações completas com React · TypeScript — do banco de dados ao deploy.</span>
+      </p>
+      <div class="hero-cta">
+        <a href="#projetos" class="btn magnetic" data-mag="0.4">
+          <span class="lbl" data-pt="Ver projetos" data-en="See work">Ver projetos</span>
+          <span class="arrow">↗</span>
+        </a>
+        <a href="https://github.com/Davi0416" target="_blank" rel="noopener" class="btn ghost magnetic" data-mag="0.4">
+          <span class="lbl">GitHub</span>
+          <span class="arrow">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="term reveal d3" data-parallax="-0.015" aria-hidden="true">
+      <div class="term-bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot g"></span>
+        <span class="name">davi@arch — zsh</span>
+      </div>
+      <div class="term-body"></div>
+    </div>
+  </div>
+
+  <div class="scrollcue reveal d4">
+    <span class="ln"></span>
+    <span data-pt="role pra baixo" data-en="scroll down">role pra baixo</span>
+  </div>
+</section>
+
+<!-- ============ SOBRE / ABOUT ============ -->
+<section class="section paper" id="sobre">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">01</span>
+      <span class="sec-name" data-pt="// sobre" data-en="// about">// sobre</span>
+      <span class="sec-title" data-pt="Como eu penso" data-en="How I think">Como eu penso</span>
+    </div>
+
+    <div class="about">
       <div>
-        <div class="avail">
-          <span class="pip"></span>
-          <span data-i18n="hero.avail">Disponvel para estgio &middot; Rio de Janeiro</span>
-        </div>
-        <p class="eyebrow" data-i18n="hero.greet">Ol, meu nome </p>
-        <h1>Davi Asafe<span class="last">.</span></h1>
-        <h2 class="role" aria-live="polite"><span class="typed" id="typed"></span><span class="caret"></span></h2>
-        <p class="lede" data-i18n="hero.lede">
-          Estudante de <strong>Engenharia de Software com nfase em IA</strong> no Instituto Infnet (Rio de Janeiro). Construo sistemas backend em <strong>Java</strong> e <strong>Python</strong>, e aplicaes completas com <strong>React &middot; TypeScript</strong> &mdash; do banco de dados ao deploy.
+        <p class="about-quote reveal">
+          <span data-pt="Minha curiosidade é entender como os sistemas " data-en="My curiosity is understanding how systems ">Minha curiosidade é entender como os sistemas </span><em data-pt="realmente" data-en="really">realmente</em><span data-pt=" funcionam." data-en=" actually work."> funcionam.</span>
         </p>
-        <div class="actions">
-          <a href="#projects" class="btn primary">
-            <span data-i18n="hero.cta1">Ver projetos</span>
-            <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
-          </a>
-          <a href="https://github.com/Davi0416" target="_blank" rel="noopener" class="btn btn-ghost">
-            GitHub
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
-          </a>
+        <div class="about-body reveal d1">
+          <p data-pt="Não me satisfaz fazer funcionar — eu preciso saber por quê. Do schema do banco até o pipeline de deploy, do garbage collector até a borda da rede, gosto de abrir a caixa-preta e olhar a engrenagem girando."
+             data-en="Making it work isn't enough — I need to know why. From the database schema to the deploy pipeline, from the garbage collector to the network edge, I like opening the black box and watching the gears turn.">Não me satisfaz fazer funcionar — eu preciso saber por quê. Do schema do banco até o pipeline de deploy, do garbage collector até a borda da rede, gosto de abrir a caixa-preta e olhar a engrenagem girando.</p>
+          <p data-pt="Uso Java, Python, Go e TypeScript não como religião, mas como ferramenta certa pro problema certo. E busco uma coisa só: que a arquitetura seja tão limpa quanto o código — legível pra quem vier depois, resiliente pra quem depende dela."
+             data-en="I use Java, Python, Go and TypeScript not as religion, but as the right tool for the right problem. And I chase one thing: architecture as clean as the code — readable for whoever comes next, resilient for whoever depends on it.">Uso Java, Python, Go e TypeScript não como religião, mas como ferramenta certa pro problema certo. E busco uma coisa só: que a arquitetura seja tão limpa quanto o código — legível pra quem vier depois, resiliente pra quem depende dela.</p>
         </div>
       </div>
-      <div class="terminal" aria-hidden="true">
-        <div class="term-bar">
-          <div class="dots"><span></span><span></span><span></span></div>
-          <span class="file">~/davi/whoami.java</span>
+
+      <aside class="about-side reveal d2">
+        <div class="row">
+          <div class="k" data-pt="Foco" data-en="Focus">Foco</div>
+          <div class="v" data-pt="Backend &amp; Sistemas" data-en="Backend &amp; Systems">Backend &amp; Sistemas</div>
         </div>
-        <div class="term-body">
-          <span class="ln"><span class="tk-comment">// $ java -jar davi --verbose</span></span>
-          <span class="ln"><span class="tk-keyword">public record</span> <span class="tk-fn">Developer</span><span class="tk-punc">(</span></span>
-          <span class="ln">&nbsp;&nbsp;String <span class="tk-prop">name</span>,</span>
-          <span class="ln">&nbsp;&nbsp;String <span class="tk-prop">location</span>,</span>
-          <span class="ln">&nbsp;&nbsp;List&lt;String&gt; <span class="tk-prop">stack</span>,</span>
-          <span class="ln">&nbsp;&nbsp;String <span class="tk-prop">status</span></span>
-          <span class="ln"><span class="tk-punc">) {}</span></span>
-          <span class="ln">&nbsp;</span>
-          <span class="ln"><span class="tk-keyword">var</span> davi <span class="tk-punc">=</span> <span class="tk-keyword">new</span> <span class="tk-fn">Developer</span><span class="tk-punc">(</span></span>
-          <span class="ln">&nbsp;&nbsp;<span class="tk-string">"Davi Asafe"</span>,</span>
-          <span class="ln">&nbsp;&nbsp;<span class="tk-string">"Rio de Janeiro"</span>,</span>
-          <span class="ln">&nbsp;&nbsp;List.<span class="tk-fn">of</span><span class="tk-punc">(</span><span class="tk-string">"Java"</span>, <span class="tk-string">"Python"</span>, <span class="tk-string">"TypeScript"</span><span class="tk-punc">),</span></span>
-          <span class="ln">&nbsp;&nbsp;<span class="tk-string">"open_to_work"</span></span>
-          <span class="ln"><span class="tk-punc">);</span></span>
+        <div class="row">
+          <div class="k" data-pt="Domínios" data-en="Domains">Domínios</div>
+          <div class="v">IA · LLMs · APIs <small data-pt="· concorrência" data-en="· concurrency">· concorrência</small></div>
+        </div>
+        <div class="row">
+          <div class="k" data-pt="Linguagens" data-en="Languages">Linguagens</div>
+          <div class="v">Java · Python · Go · TS</div>
+        </div>
+        <div class="row">
+          <div class="k" data-pt="Base" data-en="Based in">Base</div>
+          <div class="v">Brasil <small>· UTC−3</small></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STACK ============ -->
+<section class="section" id="stack">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">02</span>
+      <span class="sec-name" data-pt="// stack" data-en="// stack">// stack</span>
+      <span class="sec-title" data-pt="Ferramentas de peso" data-en="Tools that matter">Ferramentas de peso</span>
+    </div>
+    <div class="stack-intro reveal d1">
+      <p data-pt="Sem grid de 40 ícones. Só o que eu uso de verdade pra construir coisas que rodam em produção e não acordam ninguém de madrugada."
+         data-en="No 40-icon grid. Only what I actually reach for to ship things that run in production and don't wake anyone at 3am.">Sem grid de 40 ícones. Só o que eu uso de verdade pra construir coisas que rodam em produção e não acordam ninguém de madrugada.</p>
+    </div>
+  </div>
+
+  <div class="marquee reveal">
+    <div class="mq-track">
+      <span class="mq-item">Java<span class="star">✱</span></span><span class="mq-item dim">Spring Boot</span><span class="mq-item">Quarkus<span class="star">✱</span></span><span class="mq-item dim">Go</span><span class="mq-item">PostgreSQL<span class="star">✱</span></span><span class="mq-item dim">Docker</span>
+      <span class="mq-item">Java<span class="star">✱</span></span><span class="mq-item dim">Spring Boot</span><span class="mq-item">Quarkus<span class="star">✱</span></span><span class="mq-item dim">Go</span><span class="mq-item">PostgreSQL<span class="star">✱</span></span><span class="mq-item dim">Docker</span>
+    </div>
+  </div>
+  <div class="marquee rev reveal">
+    <div class="mq-track">
+      <span class="mq-item dim">Python</span><span class="mq-item">TypeScript<span class="star">✱</span></span><span class="mq-item dim">LLMs</span><span class="mq-item">REST · gRPC<span class="star">✱</span></span><span class="mq-item dim">Linux</span><span class="mq-item">CI/CD<span class="star">✱</span></span>
+      <span class="mq-item dim">Python</span><span class="mq-item">TypeScript<span class="star">✱</span></span><span class="mq-item dim">LLMs</span><span class="mq-item">REST · gRPC<span class="star">✱</span></span><span class="mq-item dim">Linux</span><span class="mq-item">CI/CD<span class="star">✱</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJETOS / WORK ============ -->
+<section class="section" id="projetos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">03</span>
+      <span class="sec-name" data-pt="// projetos" data-en="// work">// projetos</span>
+      <span class="sec-title" data-pt="Casos reais" data-en="Real cases">Casos reais</span>
+    </div>
+
+    <!-- CASE 01 -->
+    <article class="case reveal">
+      <div>
+        <div class="case-no">CASE_01</div>
+        <h3 class="case-name">Study<span class="out">Quest</span></h3>
+        <div class="case-role" data-pt="App desktop gamificado · Quarkus nativo" data-en="Gamified desktop app · Quarkus native">App desktop gamificado · Quarkus nativo</div>
+        <p class="case-desc">
+          <span data-pt="Estudar virou jogo. Um app desktop que transforma metas de aprendizado em quests, XP e progressão — compilado como "
+                data-en="Studying turned into a game. A desktop app that turns learning goals into quests, XP and progression — compiled as a ">Estudar virou jogo. Um app desktop que transforma metas de aprendizado em quests, XP e progressão — compilado como </span><b data-pt="imagem nativa" data-en="native image">imagem nativa</b><span data-pt=" pra abrir instantâneo e consumir quase nada de RAM." data-en=" to launch instantly and sip RAM."> pra abrir instantâneo e consumir quase nada de RAM.</span>
+        </p>
+        <div class="tags">
+          <span class="tag-chip hot">Quarkus</span>
+          <span class="tag-chip hot">GraalVM Native</span>
+          <span class="tag-chip">Java</span>
+          <span class="tag-chip">Desktop</span>
+          <span class="tag-chip" data-pt="Gamificação" data-en="Gamification">Gamificação</span>
+        </div>
+        <div class="case-links">
+          <a class="case-link" href="https://github.com/Davi0416" target="_blank" rel="noopener">GitHub <span class="arrow">↗</span></a>
+          <span class="case-link soon" data-pt="demo em breve" data-en="demo soon">demo em breve</span>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="section" id="about">
-    <div class="section-head reveal">
-      <span class="num">01.</span>
-      <h2 data-i18n="about.title">Sobre mim</h2>
-      <span class="rule"></span>
-    </div>
-    <div class="about-grid">
-      <div class="reveal">
-        <p data-i18n="about.p1">Sou desenvolvedor com foco em <strong>backend</strong>, cursando Engenharia de Software com nfase em IA no <strong>Instituto Infnet</strong>, no Rio de Janeiro. Meu interesse comeou com a curiosidade sobre <em>como as coisas funcionam por baixo dos panos</em> &mdash; APIs, bancos de dados, concorrncia, deploy.</p>
-        <p data-i18n="about.p2">Trabalho principalmente com <strong>Java</strong> e <strong>Python</strong> no backend, e <strong>React + TypeScript</strong> no front. J constru desde scrapers concorrentes e CLIs at uma <strong>aplicao desktop completa</strong> com Quarkus nativo, Electron e trilhas de aprendizado gamificadas.</p>
-        <p data-i18n="about.p3">Atualmente busco <strong>oportunidades de estgio ou posio jnior</strong> onde eu possa aprender com pessoas mais experientes, contribuir com cdigo limpo e crescer em projetos reais. Voc pode ver alguns deles abaixo, ou no meu <a href="https://github.com/Davi0416" target="_blank" rel="noopener">GitHub</a>.</p>
+      <div class="case-media">
+        <span class="mtag">screenshot · 4:3</span>
+        <image-slot id="proj-studyquest" placeholder="Drop StudyQuest screenshot" src="assets/studyquest.png"></image-slot>
       </div>
-      <div class="fact-table reveal">
-        <div class="fact-row"><span class="k" data-i18n="fact.role">Funo</span><span class="v">Backend / Full-stack</span></div>
-        <div class="fact-row"><span class="k" data-i18n="fact.location">Localizao</span><span class="v">Rio de Janeiro, BR</span></div>
-        <div class="fact-row"><span class="k" data-i18n="fact.uni">Faculdade</span><span class="v">Instituto Infnet</span></div>
-        <div class="fact-row"><span class="k" data-i18n="fact.course">Curso</span><span class="v" data-i18n="fact.course.v">Eng. Software &middot; IA</span></div>
-        <div class="fact-row"><span class="k" data-i18n="fact.grad">Formatura</span><span class="v blue">2030</span></div>
-        <div class="fact-row"><span class="k" data-i18n="fact.langs">Idiomas</span><span class="v" data-i18n="fact.langs.v">Portugus &middot; Ingls</span></div>
-        <div class="fact-row"><span class="k" data-i18n="fact.status">Status</span><span class="v accent" data-i18n="fact.status.v">Disponvel</span></div>
-      </div>
-    </div>
-  </section>
+    </article>
 
-  <section class="section" id="skills">
-    <div class="section-head reveal">
-      <span class="num">02.</span>
-      <h2 data-i18n="skills.title">Skills</h2>
-      <span class="rule"></span>
-    </div>
-    <div class="skills-section reveal">
-      <h3 data-i18n="skills.lang">Linguagens</h3>
-      <div class="skills-grid">
-        <div class="skill"><i class="devicon-java-plain colored"></i><span class="name">Java</span></div>
-        <div class="skill">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-            <linearGradient id="python-original-a" gradientUnits="userSpaceOnUse" x1="70.252" y1="1237.476" x2="170.659" y2="1151.089" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)">
-              <stop offset="0" stop-color="#5A9FD4"/>
-              <stop offset="1" stop-color="#306998"/>
-            </linearGradient>
-            <linearGradient id="python-original-b" gradientUnits="userSpaceOnUse" x1="209.474" y1="1098.811" x2="173.62" y2="1149.537" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)">
-              <stop offset="0" stop-color="#FFD43B"/>
-              <stop offset="1" stop-color="#FFE873"/>
-            </linearGradient>
-            <path fill="url(#python-original-a)" d="M63.391 1.988c-4.222.02-8.252.379-11.8 1.007-10.45 1.846-12.346 5.71-12.346 12.837v9.411h24.693v3.137H29.977c-7.176 0-13.46 4.313-15.426 12.521-2.268 9.405-2.368 15.275 0 25.096 1.755 7.311 5.947 12.519 13.124 12.519h8.491V67.234c0-8.151 7.051-15.34 15.426-15.34h24.665c6.866 0 12.346-5.654 12.346-12.548V15.833c0-6.693-5.646-11.72-12.346-12.837-4.244-.706-8.645-1.027-12.866-1.008zM50.037 9.557c2.55 0 4.634 2.117 4.634 4.721 0 2.593-2.083 4.69-4.634 4.69-2.56 0-4.633-2.097-4.633-4.69-.001-2.604 2.073-4.721 4.633-4.721z" transform="translate(0 10.26)"/>
-            <path fill="url(#python-original-b)" d="M91.682 28.38v10.966c0 8.5-7.208 15.655-15.426 15.655H51.591c-6.756 0-12.346 5.783-12.346 12.549v23.515c0 6.691 5.818 10.628 12.346 12.547 7.816 2.297 15.312 2.713 24.665 0 6.216-1.801 12.346-5.423 12.346-12.547v-9.412H63.938v-3.138h37.012c7.176 0 9.852-5.005 12.348-12.519 2.578-7.735 2.467-15.174 0-25.096-1.774-7.145-5.161-12.521-12.348-12.521h-9.268zM77.809 87.927c2.561 0 4.634 2.097 4.634 4.692 0 2.602-2.074 4.719-4.634 4.719-2.55 0-4.633-2.117-4.633-4.719 0-2.595 2.083-4.692 4.633-4.692z" transform="translate(0 10.26)"/>
-          </svg>
-          <span class="name">Python</span>
+    <!-- CASE 02 -->
+    <article class="case flip reveal">
+      <div>
+        <div class="case-no">CASE_02</div>
+        <h3 class="case-name">Vo<span class="out">cash</span></h3>
+        <div class="case-role" data-pt="Assistente financeiro por voz · LLMs" data-en="Voice financial assistant · LLMs">Assistente financeiro por voz · LLMs</div>
+        <p class="case-desc">
+          <span data-pt="&quot;Quanto gastei com comida esse mês?&quot; — e ele responde. Um assistente que entende fala natural, interpreta intenção com "
+                data-en="&quot;How much did I spend on food this month?&quot; — and it answers. An assistant that understands natural speech, parses intent with ">"Quanto gastei com comida esse mês?" — e ele responde. Um assistente que entende fala natural, interpreta intenção com </span><b>LLMs</b><span data-pt=" e devolve sua vida financeira em linguagem humana, sem planilha." data-en=" and gives back your financial life in plain language, no spreadsheet."> e devolve sua vida financeira em linguagem humana, sem planilha.</span>
+        </p>
+        <div class="tags">
+          <span class="tag-chip hot">LLMs</span>
+          <span class="tag-chip hot">Speech-to-Text</span>
+          <span class="tag-chip">Python</span>
+          <span class="tag-chip">NLP</span>
+          <span class="tag-chip">API</span>
         </div>
-        <div class="skill"><i class="devicon-typescript-plain colored"></i><span class="name">TypeScript</span></div>
-        <div class="skill"><i class="devicon-go-original-wordmark colored"></i><span class="name">Go</span></div>
-      </div>
-    </div>
-    <div class="skills-section reveal">
-      <h3 data-i18n="skills.frame">Frameworks</h3>
-      <div class="skills-grid">
-        <div class="skill"><i class="devicon-spring-original colored"></i><span class="name">Spring Boot</span></div>
-        <div class="skill">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 193 193">
-            <style>
-              .q-blue { fill: #4695eb; }
-              .q-red { fill: #ff004a; }
-            </style>
-            <polygon class="q-blue" points="126.05 34.6 96.61 51.59 126.05 68.59 126.05 34.6"/>
-            <polygon class="q-red" points="67.17 34.6 67.17 68.59 96.61 51.59 67.17 34.6"/>
-            <polygon class="q-blue" points="36.13 88.36 65.57 105.36 65.57 71.37 36.13 88.36"/>
-            <polygon class="q-red" points="65.57 139.35 95.01 122.36 65.57 105.36 65.57 139.35"/>
-            <polygon class="q-blue" points="127.65 139.35 127.65 105.36 98.21 122.36 127.65 139.35"/>
-            <polygon class="q-red" points="157.09 88.36 127.65 71.37 127.65 105.36 157.09 88.36"/>
-            <path class="q-blue" d="M160.5,1H32.72A31.81,31.81,0,0,0,1,32.72V160.5a31.81,31.81,0,0,0,31.72,31.72h87.51L96.61,134.85,79.48,171.07H32.72A10.71,10.71,0,0,1,22.15,160.5V32.72A10.71,10.71,0,0,1,32.72,22.15H160.5a10.71,10.71,0,0,1,10.57,10.57V160.5a10.71,10.71,0,0,1-10.57,10.57H132.77l8.71,21.15h19a31.81,31.81,0,0,0,31.72-31.72V32.72A31.81,31.81,0,0,0,160.5,1Z"/>
-          </svg>
-          <span class="name">Quarkus</span>
-        </div>
-        <div class="skill"><i class="devicon-react-original colored"></i><span class="name">React</span></div>
-        <div class="skill"><i class="devicon-nextjs-original-wordmark colored"></i><span class="name">Next.js</span></div>
-        <div class="skill"><i class="devicon-tailwindcss-original colored"></i><span class="name">Tailwind</span></div>
-        <div class="skill"><i class="devicon-electron-original colored"></i><span class="name">Electron</span></div>
-      </div>
-    </div>
-    <div class="skills-section reveal">
-      <h3 data-i18n="skills.infra">Banco &middot; Infra &middot; Tooling</h3>
-      <div class="skills-grid">
-        <div class="skill"><i class="devicon-postgresql-plain colored"></i><span class="name">PostgreSQL</span></div>
-        <div class="skill"><i class="devicon-sqlite-plain colored"></i><span class="name">SQLite</span></div>
-        <div class="skill"><i class="devicon-docker-plain colored"></i><span class="name">Docker</span></div>
-        <div class="skill"><i class="devicon-git-plain colored"></i><span class="name">Git</span></div>
-        <div class="skill"><i class="devicon-linux-plain colored"></i><span class="name">Linux</span></div>
-        <div class="skill"><i class="devicon-vercel-original colored"></i><span class="name">Vercel</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="projects">
-    <div class="section-head reveal">
-      <span class="num">03.</span>
-      <h2 data-i18n="projects.title">Projetos</h2>
-      <span class="rule"></span>
-    </div>
-
-    <div class="featured reveal">
-      <a class="feat-image" href="https://github.com/Davi0416/StudyQuest" target="_blank" rel="noopener">
-        <img src="studyquest-preview.png" alt="StudyQuest &mdash; plataforma de aprendizado gamificada">
-      </a>
-      <div class="feat-content">
-        <p class="eyebrow feat-eyebrow" data-i18n="projects.featured">Projeto em destaque</p>
-        <h3><a href="https://github.com/Davi0416/StudyQuest" target="_blank" rel="noopener">StudyQuest</a></h3>
-        <div class="feat-text">
-          <p data-i18n="projects.studyquest.desc">Plataforma de aprendizado gamificada empacotada como <em>app desktop nativo</em>. Trilhas interativas com mapa RPG, execuo de cdigo Python em sandbox, flashcards com reviso espaada e sistema de XP &mdash; backend Quarkus compilado para binrio nativo via GraalVM.</p>
-          <div class="feat-tags"><span>Java</span><span>Quarkus</span><span>GraalVM</span><span>React</span><span>TypeScript</span><span>Electron</span><span>SQLite</span></div>
-        </div>
-        <div class="feat-links">
-          <a href="https://github.com/Davi0416/StudyQuest" target="_blank" rel="noopener" aria-label="GitHub">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2.16c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.27-1.69-1.27-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.69 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.17a10.93 10.93 0 015.74 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.25 5.65.41.36.78 1.07.78 2.16v3.2c0 .31.21.67.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg>
-          </a>
+        <div class="case-links">
+          <a class="case-link" href="https://github.com/Davi0416" target="_blank" rel="noopener">GitHub <span class="arrow">↗</span></a>
+          <span class="case-link soon" data-pt="demo em breve" data-en="demo soon">demo em breve</span>
         </div>
       </div>
+      <div class="case-media">
+        <span class="mtag">screenshot · 4:3</span>
+        <image-slot id="proj-vocash" placeholder="Drop Vocash screenshot" src="assets/vocash.png"></image-slot>
+      </div>
+    </article>
+
+    <!-- CASE 03 -->
+    <article class="case reveal">
+      <div>
+        <div class="case-no">CASE_03</div>
+        <h3 class="case-name">Portal<span class="out">Acácio</span></h3>
+        <div class="case-role" data-pt="Portal Escolar Oficial · Next.js" data-en="Official School Portal · Next.js">Portal Escolar Oficial · Next.js</div>
+        <p class="case-desc">
+          <span data-pt="O sistema oficial adotado pela ETI Municipal José Acácio Pessôa. Centraliza avisos, calendário, materiais e simulados com "
+                data-en="The official system adopted by the school. Centralizes announcements, calendar, study materials and mock exams with ">O sistema oficial adotado pela ETI Municipal José Acácio Pessôa. Centraliza avisos, calendário, materiais e simulados com </span><b data-pt="correção automática" data-en="automatic grading">correção automática</b><span data-pt=" e histórico de desempenho." data-en=" and performance history."> e histórico de desempenho.</span>
+        </p>
+        <div class="tags">
+          <span class="tag-chip hot">Next.js</span>
+          <span class="tag-chip hot">TypeScript</span>
+          <span class="tag-chip">Prisma</span>
+          <span class="tag-chip">PostgreSQL</span>
+          <span class="tag-chip">Vercel</span>
+        </div>
+        <div class="case-links">
+          <a class="case-link" href="https://acacio-portal.com.br" target="_blank" rel="noopener" data-pt="Acessar Portal" data-en="Visit Portal">Acessar Portal <span class="arrow">↗</span></a>
+        </div>
+      </div>
+      <div class="case-media">
+        <span class="mtag">screenshot · 4:3</span>
+        <image-slot id="proj-acacio" placeholder="Drop Portal Acácio screenshot" src="assets/acacio.png"></image-slot>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ CONTATO / CONTACT ============ -->
+<section class="section contact" id="contato">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">04</span>
+      <span class="sec-name" data-pt="// contato" data-en="// contact">// contato</span>
+      <span class="sec-title" data-pt="Bora trocar ideia" data-en="Let's talk">Bora trocar ideia</span>
     </div>
 
-    <h3 class="reveal" style="font-family:var(--font-mono);font-size:13px;color:var(--text-mute);letter-spacing:.12em;text-transform:uppercase;margin:0 0 18px;" data-i18n="projects.other">Outros projetos</h3>
-
-    <div class="other-projects">
-
-      <a class="proj-card" href="https://github.com/Davi0416/vocash" target="_blank" rel="noopener">
-        <div class="proj-head">
-          <div class="folder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 8a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg></div>
-          <div class="proj-links"><span aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2.16c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.27-1.69-1.27-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.69 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.17a10.93 10.93 0 015.74 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.25 5.65.41.36.78 1.07.78 2.16v3.2c0 .31.21.67.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg></span></div>
-        </div>
-        <h4>Vocash</h4>
-        <p data-i18n="projects.vocash.desc">Assistente financeiro por voz: o udio  transcrito e interpretado por um LLM que decide qual ao executar &mdash; sem formulrios, sem comandos textuais.</p>
-        <div class="proj-tags"><span>TypeScript</span><span>LLM</span><span>Whisper</span><span>REST API</span></div>
-      </a>
-
-      <a class="proj-card" href="https://github.com/Davi0416/dealwatch" target="_blank" rel="noopener">
-        <div class="proj-head">
-          <div class="folder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 8a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg></div>
-          <div class="proj-links"><span aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2.16c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.27-1.69-1.27-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.69 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.17a10.93 10.93 0 015.74 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.25 5.65.41.36.78 1.07.78 2.16v3.2c0 .31.21.67.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg></span></div>
-        </div>
-        <h4>Dealwatch</h4>
-        <p data-i18n="projects.dealwatch.desc">Monitor de preos de jogos com histrico completo e alertas de menor preo histrico. Acompanha mltiplas lojas automaticamente.</p>
-        <div class="proj-tags"><span>Java</span><span>Spring Boot</span><span>PostgreSQL</span></div>
-      </a>
-
-      <a class="proj-card" href="https://github.com/Davi0416/market-tracker" target="_blank" rel="noopener">
-        <div class="proj-head">
-          <div class="folder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 8a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg></div>
-          <div class="proj-links"><span aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2.16c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.27-1.69-1.27-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.69 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.17a10.93 10.93 0 015.74 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.25 5.65.41.36.78 1.07.78 2.16v3.2c0 .31.21.67.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg></span></div>
-        </div>
-        <h4>Market Tracker</h4>
-        <p data-i18n="projects.market.desc">Pipeline de monitoramento de preos com scraping concorrente &mdash; colhe dados de mltiplas fontes em paralelo e persiste no Postgres.</p>
-        <div class="proj-tags"><span>Go</span><span>PostgreSQL</span><span>Colly</span></div>
-      </a>
-
-      <a class="proj-card" href="https://github.com/Davi0416/Vitalys" target="_blank" rel="noopener">
-        <div class="proj-head">
-          <div class="folder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 8a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg></div>
-          <div class="proj-links"><span aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2.16c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.27-1.69-1.27-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.69 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.17a10.93 10.93 0 015.74 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.25 5.65.41.36.78 1.07.78 2.16v3.2c0 .31.21.67.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg></span></div>
-        </div>
-        <h4>Vitalys</h4>
-        <p data-i18n="projects.vitalys.desc">Sistema de gesto clnica com API REST e controle de acesso por papis. Cobre cadastro de pacientes, agendamentos e pronturios.</p>
-        <div class="proj-tags"><span>Java</span><span>Spring Boot</span><span>Docker</span><span>SQL</span></div>
-      </a>
-
-      <a class="proj-card" href="https://github.com/Davi0416/desafio-itau-java" target="_blank" rel="noopener">
-        <div class="proj-head">
-          <div class="folder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 8a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg></div>
-          <div class="proj-links"><span aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2.16c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.27-1.69-1.27-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.69 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.17a10.93 10.93 0 015.74 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.25 5.65.41.36.78 1.07.78 2.16v3.2c0 .31.21.67.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg></span></div>
-        </div>
-        <h4>Desafio Ita&uacute; Java</h4>
-        <p data-i18n="projects.itau.desc">Soluo para o desafio tcnico oficial Java 10x do Ita Unibanco. Foco em boas prticas, arquitetura limpa e cobertura de testes.</p>
-        <div class="proj-tags"><span>Java</span><span>Spring Boot</span><span>Testes</span></div>
-      </a>
-
-      <a class="proj-card" href="https://github.com/Davi0416/GoCheck-Uptime" target="_blank" rel="noopener">
-        <div class="proj-head">
-          <div class="folder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 8a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg></div>
-          <div class="proj-links"><span aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2.16c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.27-1.69-1.27-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.69 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.17a10.93 10.93 0 015.74 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.25 5.65.41.36.78 1.07.78 2.16v3.2c0 .31.21.67.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg></span></div>
-        </div>
-        <h4>GoCheck Uptime</h4>
-        <p data-i18n="projects.gocheck.desc">Monitor de disponibilidade de servios web via CLI, com checagem por intervalo configurvel e relatrios formatados no terminal.</p>
-        <div class="proj-tags"><span>Go</span><span>HTTP</span><span>CLI</span></div>
-      </a>
-
-    </div>
-  </section>
-
-  <section class="section contact" id="contact">
-    <div class="reveal">
-      <span class="eyebrow">04. <span data-i18n="contact.eyebrow">Vamos conversar</span></span>
-      <h2 data-i18n="contact.title">Pr&oacute;xima etapa.</h2>
-      <p data-i18n="contact.body">Estou em busca de oportunidades de est&aacute;gio ou posi&ccedil;&atilde;o j&uacute;nior. Se sua equipe tem uma vaga aberta &mdash; ou s&oacute; quer trocar uma ideia sobre Java, Python ou TypeScript &mdash; minha caixa de entrada est&aacute; aberta.</p>
-      <a class="btn primary" href="mailto:daviasafe8@gmail.com">
-        <span data-i18n="contact.cta">Enviar email</span>
-        <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+    <div class="contact-big reveal">
+      <a href="/cdn-cgi/l/email-protection#0c686d7a654c697469617c6063226f6361">
+        <span data-pt="Sobre código," data-en="About code,">Sobre código,</span><span class="u"></span>
       </a>
     </div>
-  </section>
+    <div class="contact-big reveal d1">
+      <a href="/cdn-cgi/l/email-protection#2c484d5a456c495449415c4043024f4341">
+        <span data-pt="vagas ou" data-en="roles or" >vagas ou</span><span class="u"></span>
+      </a>
+    </div>
+    <div class="contact-big reveal d2">
+      <a href="/cdn-cgi/l/email-protection#e48085928da4819c818994888bca878b89">
+        <span data-pt="só um oi." data-en="just hi." >só um oi.</span><span class="u"></span>
+      </a>
+    </div>
+
+    <div class="contact-row reveal d2">
+      <div class="contact-meta">
+        <div class="k" data-pt="Resposta" data-en="Reply">Resposta</div>
+        <div data-pt="normalmente em 24h · PT / EN" data-en="usually within 24h · PT / EN">normalmente em 24h · PT / EN</div>
+      </div>
+      <div class="contact-socials">
+        <a class="soc magnetic" data-mag="0.25" href="/cdn-cgi/l/email-protection#5034312639103528353d203c3f7e333f3d">Email <span class="arrow">↗</span></a>
+        <a class="soc magnetic" data-mag="0.25" href="https://github.com/Davi0416" target="_blank" rel="noopener">GitHub <span class="arrow">↗</span></a>
+        <a class="soc magnetic" data-mag="0.25" href="https://www.linkedin.com/in/" target="_blank" rel="noopener">LinkedIn <span class="arrow">↗</span></a>
+      </div>
+    </div>
+  </div>
+</section>
 </main>
 
-<footer>
-  <div>
-    <a href="https://github.com/Davi0416" target="_blank" rel="noopener">github.com/Davi0416</a>
-    &nbsp;&middot;&nbsp;
-    <a href="mailto:daviasafe8@gmail.com">daviasafe8@gmail.com</a>
-    &nbsp;&middot;&nbsp;
-    <a href="https://linkedin.com/in/davi-asafe-097572400" target="_blank" rel="noopener">LinkedIn</a>
-  </div>
-  <div class="built"><span data-i18n="footer.built">Constru&iacute;do com HTML, CSS e um pouco de JavaScript</span> &middot; &copy; <span id="year"></span> Davi Asafe</div>
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <span>© <span class="yr">2026</span> Davi Asafe</span>
+  <span data-pt="feito à mão · sem template" data-en="hand-crafted · no template">feito à mão · sem template</span>
+  <span class="clock">--:--:-- BRT</span>
 </footer>
 
-<script>
-const I18N={pt:{"nav.about":"Sobre","nav.skills":"Skills","nav.projects":"Projetos","nav.contact":"Contato","hero.avail":"Dispon\xedvel para est\xe1gio · Rio de Janeiro","hero.greet":"Ol\xe1, meu nome \xe9","hero.lede":"Estudante de <strong>Engenharia de Software com \xeanfase em IA</strong> no Instituto Infnet (Rio de Janeiro). Constru\xedo sistemas backend em <strong>Java</strong> e <strong>Python</strong>, e aplica\xe7\xf5es completas com <strong>React · TypeScript</strong> — do banco de dados ao deploy.","hero.cta1":"Ver projetos","about.title":"Sobre mim","about.p1":"Sou desenvolvedor com foco em <strong>backend</strong>, cursando Engenharia de Software com \xeanfase em IA no <strong>Instituto Infnet</strong>, no Rio de Janeiro. Meu interesse come\xe7ou com a curiosidade sobre <em>como as coisas funcionam por baixo dos panos</em> — APIs, bancos de dados, concorr\xeancia, deploy.","about.p2":"Trabalho principalmente com <strong>Java</strong> e <strong>Python</strong> no backend, e <strong>React + TypeScript</strong> no front. J\xe1 constru\xed desde scrapers concorrentes e CLIs at\xe9 uma <strong>aplica\xe7\xe3o desktop completa</strong> com Quarkus nativo, Electron e trilhas de aprendizado gamificadas.","about.p3":"Atualmente busco <strong>oportunidades de est\xe1gio ou posi\xe7\xe3o j\xfanior</strong> onde eu possa aprender com pessoas mais experientes, contribuir com c\xf3digo limpo e crescer em projetos reais. Voc\xea pode ver alguns deles abaixo, ou no meu <a href='https://github.com/Davi0416' target='_blank' rel='noopener'>GitHub</a>.","fact.role":"Fun\xe7\xe3o","fact.location":"Localiza\xe7\xe3o","fact.uni":"Faculdade","fact.course":"Curso","fact.course.v":"Eng. Software · IA","fact.grad":"Formatura","fact.langs":"Idiomas","fact.langs.v":"Portugu\xeas · Ingl\xeas","fact.status":"Status","fact.status.v":"Dispon\xedvel","skills.title":"Skills","skills.lang":"Linguagens","skills.frame":"Frameworks","skills.infra":"Banco · Infra · Tooling","projects.title":"Projetos","projects.featured":"Projeto em destaque","projects.other":"Outros projetos","projects.studyquest.desc":"Plataforma de aprendizado gamificada empacotada como <em>app desktop nativo</em>. Trilhas interativas com mapa RPG, execu\xe7\xe3o de c\xf3digo Python em sandbox, flashcards com revis\xe3o espa\xe7ada e sistema de XP — backend Quarkus compilado para bin\xe1rio nativo via GraalVM.","projects.vocash.desc":"Assistente financeiro por voz: o \xe1udio \xe9 transcrito e interpretado por um LLM que decide qual a\xe7\xe3o executar — sem formul\xe1rios, sem comandos textuais.","projects.dealwatch.desc":"Monitor de pre\xe7os de jogos com hist\xf3rico completo e alertas de menor pre\xe7o hist\xf3rico. Acompanha m\xfaltiplas lojas automaticamente.","projects.market.desc":"Pipeline de monitoramento de pre\xe7os com scraping concorrente — colhe dados de m\xfaltiplas fontes em paralelo e persiste no Postgres.","projects.vitalys.desc":"Sistema de gest\xe3o cl\xednica com API REST e controle de acesso por pap\xe9is. Cobre cadastro de pacientes, agendamentos e prontu\xe1rios.","projects.itau.desc":"Solu\xe7\xe3o para o desafio t\xe9cnico oficial Java 10x do Ita\xfa Unibanco. Foco em boas pr\xe1ticas, arquitetura limpa e cobertura de testes.","projects.gocheck.desc":"Monitor de disponibilidade de servi\xe7os web via CLI, com checagem por intervalo configur\xe1vel e relat\xf3rios formatados no terminal.","contact.eyebrow":"Vamos conversar","contact.title":"Pr\xf3xima etapa.","contact.body":"Estou em busca de oportunidades de est\xe1gio ou posi\xe7\xe3o j\xfanior. Se sua equipe tem uma vaga aberta — ou s\xf3 quer trocar uma ideia sobre Java, Python ou TypeScript — minha caixa de entrada est\xe1 aberta.","contact.cta":"Enviar email","footer.built":"Constru\xeddo com HTML, CSS e um pouco de JavaScript","_typewriter":["Backend Developer","Full-stack Developer","AI Engineering Student"]},en:{"nav.about":"About","nav.skills":"Skills","nav.projects":"Projects","nav.contact":"Contact","hero.avail":"Available for internships · Rio de Janeiro","hero.greet":"Hi, my name is","hero.lede":"<strong>Software Engineering with AI focus</strong> student at Instituto Infnet (Rio de Janeiro). I build backend systems in <strong>Java</strong> and <strong>Python</strong>, and full-stack apps with <strong>React · TypeScript</strong> — from the database to the deploy.","hero.cta1":"See projects","about.title":"About me","about.p1":"I'm a developer focused on <strong>backend</strong>, currently studying Software Engineering with AI focus at <strong>Instituto Infnet</strong> in Rio de Janeiro. It started with curiosity about <em>how things work under the hood</em> — APIs, databases, concurrency, deploys.","about.p2":"I work mainly with <strong>Java</strong> and <strong>Python</strong> on the backend, and <strong>React + TypeScript</strong> on the front. I've built everything from concurrent scrapers and CLIs to a <strong>full desktop application</strong> with native Quarkus, Electron and gamified learning trails.","about.p3":"I'm currently looking for <strong>internships or junior positions</strong> where I can learn from more experienced people, contribute clean code and grow on real-world projects. You can see some of them below, or on my <a href='https://github.com/Davi0416' target='_blank' rel='noopener'>GitHub</a>.","fact.role":"Role","fact.location":"Location","fact.uni":"University","fact.course":"Major","fact.course.v":"Software Eng. · AI","fact.grad":"Graduation","fact.langs":"Languages","fact.langs.v":"Portuguese · English","fact.status":"Status","fact.status.v":"Available","skills.title":"Skills","skills.lang":"Languages","skills.frame":"Frameworks","skills.infra":"Database · Infra · Tooling","projects.title":"Projects","projects.featured":"Featured project","projects.other":"Other projects","projects.studyquest.desc":"Gamified learning platform packaged as a <em>native desktop app</em>. Interactive trails with RPG map, Python sandbox execution, spaced-repetition flashcards and XP system — Quarkus backend compiled to native binary via GraalVM.","projects.vocash.desc":"Voice-driven financial assistant: audio is transcribed and interpreted by an LLM that decides which action to take — no forms, no text commands.","projects.dealwatch.desc":"Game price monitor with full history and all-time-low alerts. Automatically tracks multiple storefronts.","projects.market.desc":"Price monitoring pipeline with concurrent scraping — pulls data from multiple sources in parallel and persists to Postgres.","projects.vitalys.desc":"Clinic management system with REST API and role-based access. Covers patients, appointments and medical records.","projects.itau.desc":"Solution for Ita\xfa Unibanco's official Java 10x technical challenge. Focused on clean architecture, best practices and test coverage.","projects.gocheck.desc":"CLI uptime monitor for web services, with configurable check intervals and clean terminal reports.","contact.eyebrow":"Let's talk","contact.title":"What's next.","contact.body":"I'm looking for internships or junior positions. If your team is hiring — or you just want to chat about Java, Python or TypeScript — my inbox is open.","contact.cta":"Send email","footer.built":"Built with HTML, CSS and a little JavaScript","_typewriter":["Backend Developer","Full-stack Developer","AI Engineering Student"]}};
-
-let currentLang="pt";
-function applyLang(lang){
-  currentLang=lang;
-  document.documentElement.lang=lang==="pt"?"pt-BR":"en";
-  document.querySelectorAll("[data-i18n]").forEach(el=>{const k=el.getAttribute("data-i18n");if(I18N[lang][k]!==undefined)el.innerHTML=I18N[lang][k];});
-  document.querySelectorAll(".lang-toggle button").forEach(b=>{const a=b.dataset.lang===lang;b.classList.toggle("active",a);b.setAttribute("aria-selected",a);});
-  resetTypewriter();
-}
-document.querySelectorAll(".lang-toggle button").forEach(b=>b.addEventListener("click",()=>applyLang(b.dataset.lang)));
-
-const typedEl=document.getElementById("typed");
-let twTimer=null;
-function resetTypewriter(){if(twTimer)clearTimeout(twTimer);typedEl.textContent="";runTypewriter();}
-function runTypewriter(){
-  const words=I18N[currentLang]["_typewriter"];
-  let i=0,j=0,del=false;
-  function tick(){
-    const w=words[i];
-    if(!del){typedEl.textContent=w.slice(0,++j);if(j===w.length){del=true;twTimer=setTimeout(tick,1600);return;}}
-    else{typedEl.textContent=w.slice(0,--j);if(j===0){del=false;i=(i+1)%words.length;}}
-    twTimer=setTimeout(tick,del?35:75);
-  }
-  tick();
-}
-
-const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target);}}),{threshold:.12,rootMargin:"0px 0px -40px 0px"});
-document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
-
-window.addEventListener("scroll",()=>document.getElementById("nav").classList.toggle("scrolled",window.scrollY>24),{passive:true});
-
-document.querySelectorAll(".proj-card").forEach(card=>{
-  card.addEventListener("mousemove",e=>{const r=card.getBoundingClientRect();card.style.setProperty("--mx",(e.clientX-r.left)+"px");card.style.setProperty("--my",(e.clientY-r.top)+"px");});
-});
-
-const glow=document.getElementById("cursorGlow");
-let glowVisible=false;
-window.addEventListener("mousemove",e=>{glow.style.left=e.clientX+"px";glow.style.top=e.clientY+"px";if(!glowVisible){glow.style.opacity="1";glowVisible=true;}},{passive:true});
-window.addEventListener("mouseout",()=>{glow.style.opacity="0";glowVisible=false;});
-
-document.getElementById("year").textContent=new Date().getFullYear();
-applyLang("pt");
-</script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="image-slot.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
