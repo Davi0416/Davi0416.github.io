@@ -10,50 +10,53 @@
   /* ---------- LANGUAGE ---------- */
   const LANG_KEY = "davi.lang";
   function setLang(lang){
-    document.documentElement.lang = lang === "en" ? "en" : "pt-BR";
+    const isEnglish = lang === "en";
+    document.documentElement.lang = isEnglish ? "en" : "pt-BR";
     $$("[data-pt]").forEach(el=>{
-      const v = el.getAttribute(lang === "en" ? "data-en" : "data-pt");
+      const v = el.getAttribute(isEnglish ? "data-en" : "data-pt");
       if(v !== null) el.textContent = v;
     });
-    $$(".lang button").forEach(b=> b.classList.toggle("on", b.dataset.lang === lang));
+    $$("[data-aria-pt]").forEach(el=>{
+      const v = el.getAttribute(isEnglish ? "data-aria-en" : "data-aria-pt");
+      if(v !== null) el.setAttribute("aria-label", v);
+    });
+    $$(".lang button").forEach(b=>{
+      const active = b.dataset.lang === lang;
+      b.classList.toggle("on", active);
+      b.setAttribute("aria-pressed", String(active));
+    });
+    document.title = isEnglish
+      ? "Davi Asafe | Backend, Full-stack and AI"
+      : "Davi Asafe | Backend, Full-stack e IA";
+    const description = $("meta[name='description']");
+    if(description){
+      description.content = isEnglish
+        ? "Davi Asafe's portfolio: Software Engineering student building backend, full-stack and artificial intelligence projects."
+        : "Portfólio de Davi Asafe, estudante de Engenharia de Software focado em backend, aplicações full-stack e inteligência artificial.";
+    }
     try{ localStorage.setItem(LANG_KEY, lang); }catch(e){}
     window.__lang = lang;
-    startTypewriter();
-  }
-
-  /* ---------- TYPEWRITER (rotating roles) ---------- */
-  const ROLES = {
-    pt: ["Backend Developer", "Full-stack Developer", "AI Engineering Specialist"],
-    en: ["Backend Developer", "Full-stack Developer", "AI Engineering Specialist"]
-  };
-  let twTimer = null;
-  function startTypewriter(){
-    const el = $(".type-role");
-    if(!el) return;
-    const roles = ROLES[window.__lang] || ROLES.pt;
-    if(twTimer){ clearTimeout(twTimer); twTimer = null; }
-    if(reduce){ el.textContent = roles[0]; return; }
-    let ri = 0, ci = 0, del = false;
-    el.textContent = "";
-    function step(){
-      const w = roles[ri % roles.length];
-      if(!del){
-        ci++; el.textContent = w.slice(0, ci);
-        if(ci >= w.length){ del = true; twTimer = setTimeout(step, 1900); return; }
-        twTimer = setTimeout(step, 70 + Math.random()*65);
-      } else {
-        ci--; el.textContent = w.slice(0, ci);
-        if(ci <= 0){ del = false; ri++; twTimer = setTimeout(step, 380); return; }
-        twTimer = setTimeout(step, 38);
-      }
-    }
-    twTimer = setTimeout(step, 650);
   }
 
   let startLang = "pt";
   try{ startLang = localStorage.getItem(LANG_KEY) || "pt"; }catch(e){}
   $$(".lang button").forEach(b=> b.addEventListener("click", ()=> setLang(b.dataset.lang)));
   setLang(startLang);
+
+  /* ---------- RELIABLE HASH NAVIGATION ---------- */
+  function scrollToHash(behavior){
+    if(!window.location.hash) return;
+    let id;
+    try{ id = decodeURIComponent(window.location.hash.slice(1)); }catch(e){ return; }
+    const target = document.getElementById(id);
+    if(!target) return;
+    requestAnimationFrame(()=> target.scrollIntoView({
+      behavior: reduce ? "auto" : behavior,
+      block: "start"
+    }));
+  }
+  window.addEventListener("load", ()=> scrollToHash("instant"), { once:true });
+  window.addEventListener("hashchange", ()=> scrollToHash("instant"));
 
   /* ---------- CUSTOM CURSOR ---------- */
   const dot  = $(".cursor-dot");
@@ -69,7 +72,7 @@
       ring.style.transform = `translate(${rx}px,${ry}px) translate(-50%,-50%)`;
       requestAnimationFrame(loop);
     })();
-    $$("a, button, .btn, .magnetic, image-slot").forEach(el=>{
+    $$("a, button, .btn, .magnetic").forEach(el=>{
       el.addEventListener("mouseenter", ()=> ring.classList.add("is-hot"));
       el.addEventListener("mouseleave", ()=> ring.classList.remove("is-hot"));
     });

@@ -3,13 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Davi Asafe — Backend & IA</title>
+<title>Davi Asafe | Backend, Full-stack e IA</title>
+<meta name="description" content="Portfólio de Davi Asafe, estudante de Engenharia de Software focado em backend, aplicações full-stack e inteligência artificial.">
+<meta name="author" content="Davi Asafe dos Santos Kling">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0c0f14">
+<link rel="canonical" href="https://davi0416.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://davi0416.github.io/">
+<meta property="og:title" content="Davi Asafe | Backend, Full-stack e IA">
+<meta property="og:description" content="Projetos reais em Java, Quarkus, Spring Boot, TypeScript e IA.">
+<meta property="og:image" content="https://davi0416.github.io/assets/vocash.png">
+<meta property="og:image:alt" content="Prévia do projeto StudyQuest">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2212%22 fill=%22%230c0f14%22/><circle cx=%2232%22 cy=%2232%22 r=%2212%22 fill=%22%23adff3f%22/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body id="top">
+
+<a class="skip-link" href="#conteudo" data-pt="Pular para o conteúdo" data-en="Skip to content">Pular para o conteúdo</a>
 
 <div class="noise"></div>
 <div class="cursor-dot"></div>
@@ -18,29 +33,29 @@
 <!-- ============ TOP BAR ============ -->
 <header class="topbar">
   <a href="#top" class="brand"><span class="blip"></span>DAVI&nbsp;ASAFE</a>
-  <nav class="nav">
+  <nav class="nav" aria-label="Navegação principal" data-aria-pt="Navegação principal" data-aria-en="Main navigation">
     <a href="#sobre"    class="navlink"><span class="idx">01</span><span data-pt="Sobre"    data-en="About">Sobre</span></a>
     <a href="#stack"    class="navlink"><span class="idx">02</span><span data-pt="Stack"    data-en="Stack">Stack</span></a>
     <a href="#projetos" class="navlink"><span class="idx">03</span><span data-pt="Projetos" data-en="Work">Projetos</span></a>
     <a href="#contato"  class="navlink"><span class="idx">04</span><span data-pt="Contato"  data-en="Contact">Contato</span></a>
     <div class="lang">
-      <button data-lang="pt">PT</button>
-      <button data-lang="en">EN</button>
+      <button type="button" data-lang="pt" aria-label="Ver site em português" aria-pressed="true">PT</button>
+      <button type="button" data-lang="en" aria-label="View site in English" aria-pressed="false">EN</button>
     </div>
   </nav>
 </header>
 
 <!-- ============ HERO ============ -->
-<main id="top">
+<main id="conteudo">
 <section class="hero">
   <div class="hero-kick reveal">
     <span class="tag avail"><b>●</b>&nbsp;<span data-pt="Disponível para estágio · Rio de Janeiro" data-en="Open to internships · Rio de Janeiro">Disponível para estágio · Rio de Janeiro</span></span>
   </div>
   <p class="hero-hi reveal d1" data-pt="Olá, meu nome é" data-en="Hi, my name is">Olá, meu nome é</p>
 
-  <h1 class="hero-title reveal d1" aria-label="Davi Asafe — Backend Developer, Full-stack Developer, AI Engineering Specialist">
+  <h1 class="hero-title reveal d1" aria-label="Davi Asafe — Backend, full-stack e inteligência artificial" data-aria-pt="Davi Asafe — Backend, full-stack e inteligência artificial" data-aria-en="Davi Asafe — Backend, full-stack and artificial intelligence">
     <span class="line name">Davi Asafe<span class="dot">.</span><span class="sqr" aria-hidden="true"></span></span>
-    <span class="line role-line"><span class="type-role">Backend Developer</span><span class="tcaret-bar" aria-hidden="true"></span></span>
+    <span class="line role-line" aria-hidden="true">Backend <span class="role-accent">&amp; IA</span></span>
   </h1>
 
   <div class="hero-grid">
@@ -57,6 +72,10 @@
         </a>
         <a href="https://github.com/Davi0416" target="_blank" rel="noopener" class="btn ghost magnetic" data-mag="0.4">
           <span class="lbl">GitHub</span>
+          <span class="arrow">↗</span>
+        </a>
+        <a href="https://www.linkedin.com/in/davi-kling" target="_blank" rel="noopener" class="btn ghost magnetic" data-mag="0.4">
+          <span class="lbl">LinkedIn</span>
           <span class="arrow">↗</span>
         </a>
       </div>
@@ -83,7 +102,7 @@
     <div class="sec-head reveal">
       <span class="sec-num">01</span>
       <span class="sec-name" data-pt="// sobre" data-en="// about">// sobre</span>
-      <span class="sec-title" data-pt="Como eu penso" data-en="How I think">Como eu penso</span>
+      <h2 class="sec-title" data-pt="Como eu penso" data-en="How I think">Como eu penso</h2>
     </div>
 
     <div class="about">
@@ -127,7 +146,7 @@
     <div class="sec-head reveal">
       <span class="sec-num">02</span>
       <span class="sec-name" data-pt="// stack" data-en="// stack">// stack</span>
-      <span class="sec-title" data-pt="Ferramentas de peso" data-en="Tools that matter">Ferramentas de peso</span>
+      <h2 class="sec-title" data-pt="Ferramentas de peso" data-en="Tools that matter">Ferramentas de peso</h2>
     </div>
     <div class="stack-intro reveal d1">
       <p data-pt="Sem grid de 40 ícones. Só o que eu uso de verdade pra construir coisas que rodam em produção e não acordam ninguém de madrugada."
@@ -155,7 +174,7 @@
     <div class="sec-head reveal">
       <span class="sec-num">03</span>
       <span class="sec-name" data-pt="// projetos" data-en="// work">// projetos</span>
-      <span class="sec-title" data-pt="Casos reais" data-en="Real cases">Casos reais</span>
+      <h2 class="sec-title" data-pt="Casos reais" data-en="Real cases">Casos reais</h2>
     </div>
 
     <!-- CASE 01 -->
@@ -168,6 +187,7 @@
           <span data-pt="Estudar virou jogo. Um app desktop que transforma metas de aprendizado em quests, XP e progressão — compilado como "
                 data-en="Studying turned into a game. A desktop app that turns learning goals into quests, XP and progression — compiled as a ">Estudar virou jogo. Um app desktop que transforma metas de aprendizado em quests, XP e progressão — compilado como </span><b data-pt="imagem nativa" data-en="native image">imagem nativa</b><span data-pt=" pra abrir instantâneo e consumir quase nada de RAM." data-en=" to launch instantly and sip RAM."> pra abrir instantâneo e consumir quase nada de RAM.</span>
         </p>
+        <p class="case-proof" data-pt="Offline-first · executável nativo · frontend React 19 · sincronização PostgreSQL/SQLite" data-en="Offline-first · native executable · React 19 frontend · PostgreSQL/SQLite sync">Offline-first · executável nativo · frontend React 19 · sincronização PostgreSQL/SQLite</p>
         <div class="tags">
           <span class="tag-chip hot">Quarkus</span>
           <span class="tag-chip hot">GraalVM Native</span>
@@ -176,13 +196,13 @@
           <span class="tag-chip" data-pt="Gamificação" data-en="Gamification">Gamificação</span>
         </div>
         <div class="case-links">
-          <a class="case-link" href="https://github.com/Davi0416" target="_blank" rel="noopener">GitHub <span class="arrow">↗</span></a>
-          <span class="case-link soon" data-pt="demo em breve" data-en="demo soon">demo em breve</span>
+          <a class="case-link" href="https://github.com/Davi0416/StudyQuest" target="_blank" rel="noopener">GitHub <span class="arrow">↗</span></a>
+          <a class="case-link" href="https://github.com/Davi0416/StudyQuest/releases/latest" target="_blank" rel="noopener"><span data-pt="Baixar para Windows" data-en="Download for Windows">Baixar para Windows</span> <span class="arrow">↗</span></a>
         </div>
       </div>
       <div class="case-media">
-        <span class="mtag">screenshot · 4:3</span>
-        <image-slot id="proj-studyquest" placeholder="Drop StudyQuest screenshot" src="assets/studyquest.png"></image-slot>
+        <span class="mtag" data-pt="produto · desktop" data-en="product · desktop">produto · desktop</span>
+        <img src="assets/vocash.png" width="1919" height="994" loading="lazy" alt="Mapa gamificado e interface do StudyQuest">
       </div>
     </article>
 
@@ -191,26 +211,26 @@
       <div>
         <div class="case-no">CASE_02</div>
         <h3 class="case-name">Vo<span class="out">cash</span></h3>
-        <div class="case-role" data-pt="Assistente financeiro por voz · LLMs" data-en="Voice financial assistant · LLMs">Assistente financeiro por voz · LLMs</div>
+        <div class="case-role" data-pt="Assistente financeiro por voz · Spring AI" data-en="Voice financial assistant · Spring AI">Assistente financeiro por voz · Spring AI</div>
         <p class="case-desc">
           <span data-pt="&quot;Quanto gastei com comida esse mês?&quot; — e ele responde. Um assistente que entende fala natural, interpreta intenção com "
                 data-en="&quot;How much did I spend on food this month?&quot; — and it answers. An assistant that understands natural speech, parses intent with ">"Quanto gastei com comida esse mês?" — e ele responde. Um assistente que entende fala natural, interpreta intenção com </span><b>LLMs</b><span data-pt=" e devolve sua vida financeira em linguagem humana, sem planilha." data-en=" and gives back your financial life in plain language, no spreadsheet."> e devolve sua vida financeira em linguagem humana, sem planilha.</span>
         </p>
+        <p class="case-proof" data-pt="Voz → Whisper → LLM com tool calling → PostgreSQL" data-en="Voice → Whisper → LLM tool calling → PostgreSQL">Voz → Whisper → LLM com tool calling → PostgreSQL</p>
         <div class="tags">
           <span class="tag-chip hot">LLMs</span>
           <span class="tag-chip hot">Speech-to-Text</span>
-          <span class="tag-chip">Python</span>
-          <span class="tag-chip">NLP</span>
-          <span class="tag-chip">API</span>
+          <span class="tag-chip">Java 21</span>
+          <span class="tag-chip">Spring Boot</span>
+          <span class="tag-chip">PostgreSQL</span>
         </div>
         <div class="case-links">
-          <a class="case-link" href="https://github.com/Davi0416" target="_blank" rel="noopener">GitHub <span class="arrow">↗</span></a>
-          <span class="case-link soon" data-pt="demo em breve" data-en="demo soon">demo em breve</span>
+          <a class="case-link" href="https://github.com/Davi0416/vocash" target="_blank" rel="noopener">GitHub <span class="arrow">↗</span></a>
         </div>
       </div>
       <div class="case-media">
-        <span class="mtag">screenshot · 4:3</span>
-        <image-slot id="proj-vocash" placeholder="Drop Vocash screenshot" src="assets/vocash.png"></image-slot>
+        <span class="mtag" data-pt="arquitetura · API" data-en="architecture · API">arquitetura · API</span>
+        <img src="assets/studyquest.png" width="1530" height="848" loading="lazy" alt="Dashboard financeiro com comando de voz do Vocash">
       </div>
     </article>
 
@@ -224,6 +244,7 @@
           <span data-pt="O sistema oficial adotado pela ETI Municipal José Acácio Pessôa. Centraliza avisos, calendário, materiais e simulados com "
                 data-en="The official system adopted by the school. Centralizes announcements, calendar, study materials and mock exams with ">O sistema oficial adotado pela ETI Municipal José Acácio Pessôa. Centraliza avisos, calendário, materiais e simulados com </span><b data-pt="correção automática" data-en="automatic grading">correção automática</b><span data-pt=" e histórico de desempenho." data-en=" and performance history."> e histórico de desempenho.</span>
         </p>
+        <p class="case-proof" data-pt="Sistema oficial adotado por escola municipal · produto em produção" data-en="Official system adopted by a municipal school · live product">Sistema oficial adotado por escola municipal · produto em produção</p>
         <div class="tags">
           <span class="tag-chip hot">Next.js</span>
           <span class="tag-chip hot">TypeScript</span>
@@ -236,8 +257,8 @@
         </div>
       </div>
       <div class="case-media">
-        <span class="mtag">screenshot · 4:3</span>
-        <image-slot id="proj-acacio" placeholder="Drop Portal Acácio screenshot" src="assets/acacio.png"></image-slot>
+        <span class="mtag" data-pt="em produção · web" data-en="live · web">em produção · web</span>
+        <img src="assets/acacio.png" width="1914" height="939" loading="lazy" alt="Tela do Portal Acácio com avisos e calendário escolar">
       </div>
     </article>
   </div>
@@ -249,21 +270,21 @@
     <div class="sec-head reveal">
       <span class="sec-num">04</span>
       <span class="sec-name" data-pt="// contato" data-en="// contact">// contato</span>
-      <span class="sec-title" data-pt="Bora trocar ideia" data-en="Let's talk">Bora trocar ideia</span>
+      <h2 class="sec-title" data-pt="Bora trocar ideia" data-en="Let's talk">Bora trocar ideia</h2>
     </div>
 
     <div class="contact-big reveal">
-      <a href="/cdn-cgi/l/email-protection#0c686d7a654c697469617c6063226f6361">
+      <a href="mailto:daviasafe8@gmail.com?subject=Contato%20pelo%20portf%C3%B3lio">
         <span data-pt="Sobre código," data-en="About code,">Sobre código,</span><span class="u"></span>
       </a>
     </div>
     <div class="contact-big reveal d1">
-      <a href="/cdn-cgi/l/email-protection#2c484d5a456c495449415c4043024f4341">
+      <a href="mailto:daviasafe8@gmail.com?subject=Oportunidade%20profissional">
         <span data-pt="vagas ou" data-en="roles or" >vagas ou</span><span class="u"></span>
       </a>
     </div>
     <div class="contact-big reveal d2">
-      <a href="/cdn-cgi/l/email-protection#e48085928da4819c818994888bca878b89">
+      <a href="mailto:daviasafe8@gmail.com?subject=Ol%C3%A1%2C%20Davi">
         <span data-pt="só um oi." data-en="just hi." >só um oi.</span><span class="u"></span>
       </a>
     </div>
@@ -274,9 +295,9 @@
         <div data-pt="normalmente em 24h · PT / EN" data-en="usually within 24h · PT / EN">normalmente em 24h · PT / EN</div>
       </div>
       <div class="contact-socials">
-        <a class="soc magnetic" data-mag="0.25" href="/cdn-cgi/l/email-protection#5034312639103528353d203c3f7e333f3d">Email <span class="arrow">↗</span></a>
+        <a class="soc magnetic" data-mag="0.25" href="mailto:daviasafe8@gmail.com">Email <span class="arrow">↗</span></a>
         <a class="soc magnetic" data-mag="0.25" href="https://github.com/Davi0416" target="_blank" rel="noopener">GitHub <span class="arrow">↗</span></a>
-        <a class="soc magnetic" data-mag="0.25" href="https://www.linkedin.com/in/" target="_blank" rel="noopener">LinkedIn <span class="arrow">↗</span></a>
+        <a class="soc magnetic" data-mag="0.25" href="https://www.linkedin.com/in/davi-kling" target="_blank" rel="noopener">LinkedIn <span class="arrow">↗</span></a>
       </div>
     </div>
   </div>
@@ -290,7 +311,20 @@
   <span class="clock">--:--:-- BRT</span>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="image-slot.js"></script>
 <script src="app.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Davi Asafe dos Santos Kling",
+  "url": "https://davi0416.github.io/",
+  "email": "mailto:daviasafe8@gmail.com",
+  "sameAs": [
+    "https://github.com/Davi0416",
+    "https://www.linkedin.com/in/davi-kling"
+  ],
+  "jobTitle": "Estudante de Engenharia de Software"
+}
+</script>
 </body>
 </html>
