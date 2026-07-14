@@ -36,6 +36,47 @@
     }
     try{ localStorage.setItem(LANG_KEY, lang); }catch(e){}
     window.__lang = lang;
+    startTypewriter();
+  }
+
+  /* ---------- TYPEWRITER (rotating roles) ---------- */
+  const ROLES = {
+    pt: ["Software Engineer", "Backend Developer", "Full-stack Developer", "AI Engineering Specialist"],
+    en: ["Software Engineer", "Backend Developer", "Full-stack Developer", "AI Engineering Specialist"]
+  };
+  let twTimer = null;
+  function startTypewriter(){
+    const el = $(".type-role");
+    if(!el) return;
+    const roles = ROLES[window.__lang] || ROLES.pt;
+    if(twTimer){ clearTimeout(twTimer); twTimer = null; }
+    if(reduce){ el.textContent = roles[0]; return; }
+    let roleIndex = 0, characterIndex = 0, deleting = false;
+    el.textContent = "";
+    function step(){
+      const role = roles[roleIndex % roles.length];
+      if(!deleting){
+        characterIndex++;
+        el.textContent = role.slice(0, characterIndex);
+        if(characterIndex >= role.length){
+          deleting = true;
+          twTimer = setTimeout(step, 1900);
+          return;
+        }
+        twTimer = setTimeout(step, 70 + Math.random() * 65);
+      } else {
+        characterIndex--;
+        el.textContent = role.slice(0, characterIndex);
+        if(characterIndex <= 0){
+          deleting = false;
+          roleIndex++;
+          twTimer = setTimeout(step, 380);
+          return;
+        }
+        twTimer = setTimeout(step, 38);
+      }
+    }
+    twTimer = setTimeout(step, 650);
   }
 
   let startLang = "pt";
