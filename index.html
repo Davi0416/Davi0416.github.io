@@ -202,7 +202,10 @@
       </div>
       <div class="case-media">
         <span class="mtag" data-pt="produto · desktop" data-en="product · desktop">produto · desktop</span>
-        <img src="assets/vocash.png" width="1919" height="994" loading="lazy" alt="Mapa gamificado e interface do StudyQuest">
+        <button class="media-open" type="button" data-aria-pt="Ampliar imagem do StudyQuest" data-aria-en="Enlarge StudyQuest image" aria-label="Ampliar imagem do StudyQuest">
+          <img src="assets/vocash.png" width="1919" height="994" loading="lazy" alt="Mapa gamificado e interface do StudyQuest">
+          <span class="media-hint" aria-hidden="true"><span data-pt="Ampliar" data-en="Enlarge">Ampliar</span> ↗</span>
+        </button>
       </div>
     </article>
 
@@ -230,7 +233,10 @@
       </div>
       <div class="case-media">
         <span class="mtag" data-pt="produto · voz" data-en="product · voice">produto · voz</span>
-        <img src="assets/studyquest.png" width="1530" height="848" loading="lazy" alt="Dashboard financeiro com comando de voz do Vocash">
+        <button class="media-open" type="button" data-aria-pt="Ampliar imagem do Vocash" data-aria-en="Enlarge Vocash image" aria-label="Ampliar imagem do Vocash">
+          <img src="assets/studyquest.png" width="1530" height="848" loading="lazy" alt="Dashboard financeiro com comando de voz do Vocash">
+          <span class="media-hint" aria-hidden="true"><span data-pt="Ampliar" data-en="Enlarge">Ampliar</span> ↗</span>
+        </button>
       </div>
     </article>
 
@@ -241,10 +247,10 @@
         <h3 class="case-name split-mobile">Portal<span class="out">Acácio</span></h3>
         <div class="case-role" data-pt="Portal Escolar Oficial · Next.js" data-en="Official School Portal · Next.js">Portal Escolar Oficial · Next.js</div>
         <p class="case-desc">
-          <span data-pt="O sistema oficial adotado pela ETI Municipal José Acácio Pessôa. Centraliza avisos, calendário, materiais e simulados com "
-                data-en="The official system adopted by the school. Centralizes announcements, calendar, study materials and mock exams with ">O sistema oficial adotado pela ETI Municipal José Acácio Pessôa. Centraliza avisos, calendário, materiais e simulados com </span><b data-pt="correção automática" data-en="automatic grading">correção automática</b><span data-pt=" e histórico de desempenho." data-en=" and performance history."> e histórico de desempenho.</span>
+          <span data-pt="Projeto concluído e entregue à ETI Municipal José Acácio Pessôa. O portal centraliza avisos, calendário, materiais e simulados com "
+                data-en="Completed project delivered to ETI Municipal José Acácio Pessôa. The portal centralizes announcements, calendar, study materials and mock exams with ">Projeto concluído e entregue à ETI Municipal José Acácio Pessôa. O portal centraliza avisos, calendário, materiais e simulados com </span><b data-pt="correção automática" data-en="automatic grading">correção automática</b><span data-pt=" e histórico de desempenho." data-en=" and performance history."> e histórico de desempenho.</span>
         </p>
-        <p class="case-proof" data-pt="Sistema oficial adotado por escola municipal · produto em produção" data-en="Official system adopted by a municipal school · live product">Sistema oficial adotado por escola municipal · produto em produção</p>
+        <p class="case-proof" data-pt="Projeto concluído · entregue e adotado pela escola municipal" data-en="Completed project · delivered and adopted by the municipal school">Projeto concluído · entregue e adotado pela escola municipal</p>
         <div class="tags">
           <span class="tag-chip hot">Next.js</span>
           <span class="tag-chip hot">TypeScript</span>
@@ -257,8 +263,11 @@
         </div>
       </div>
       <div class="case-media">
-        <span class="mtag" data-pt="em produção · web" data-en="live · web">em produção · web</span>
-        <img src="assets/acacio.png" width="1914" height="939" loading="lazy" alt="Tela do Portal Acácio com avisos e calendário escolar">
+        <span class="mtag" data-pt="concluído · web" data-en="completed · web">concluído · web</span>
+        <button class="media-open" type="button" data-aria-pt="Ampliar imagem do Portal Acácio" data-aria-en="Enlarge Portal Acácio image" aria-label="Ampliar imagem do Portal Acácio">
+          <img src="assets/acacio.png" width="1914" height="939" loading="lazy" alt="Tela do Portal Acácio com avisos e calendário escolar">
+          <span class="media-hint" aria-hidden="true"><span data-pt="Ampliar" data-en="Enlarge">Ampliar</span> ↗</span>
+        </button>
       </div>
     </article>
   </div>
@@ -310,6 +319,17 @@
   <span data-pt="feito à mão · sem template" data-en="hand-crafted · no template">feito à mão · sem template</span>
   <span class="clock">--:--:-- BRT</span>
 </footer>
+
+<div class="lightbox" hidden role="dialog" aria-modal="true" aria-label="Visualização ampliada do projeto" data-aria-pt="Visualização ampliada do projeto" data-aria-en="Enlarged project preview">
+  <button class="lightbox-close" type="button" aria-label="Fechar imagem" data-aria-pt="Fechar imagem" data-aria-en="Close image">
+    <span aria-hidden="true">×</span>
+    <span data-pt="Fechar" data-en="Close">Fechar</span>
+  </button>
+  <figure class="lightbox-figure">
+    <img class="lightbox-image" src="" alt="">
+    <figcaption class="lightbox-caption"></figcaption>
+  </figure>
+</div>
 
 <script src="app.js"></script>
 <script type="application/ld+json">

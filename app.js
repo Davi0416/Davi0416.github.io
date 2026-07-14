@@ -204,6 +204,59 @@
     } else { startT(); }
   }
 
+  /* ---------- PROJECT IMAGE LIGHTBOX ---------- */
+  const lightbox = $(".lightbox");
+  if(lightbox){
+    const lightboxImage = $(".lightbox-image", lightbox);
+    const lightboxCaption = $(".lightbox-caption", lightbox);
+    const lightboxClose = $(".lightbox-close", lightbox);
+    let lightboxOpener = null;
+    let closeTimer = null;
+
+    function openLightbox(button){
+      const image = $("img", button);
+      const project = button.closest(".case");
+      const title = $(".case-name", project);
+      const label = $(".mtag", project);
+      if(!image) return;
+      if(closeTimer){ clearTimeout(closeTimer); closeTimer = null; }
+      lightboxOpener = button;
+      lightboxImage.src = image.currentSrc || image.src;
+      lightboxImage.alt = image.alt;
+      lightboxCaption.textContent = [title && title.textContent, label && label.textContent].filter(Boolean).join(" · ");
+      lightbox.hidden = false;
+      document.body.classList.add("lightbox-open");
+      requestAnimationFrame(()=>{
+        lightbox.classList.add("is-open");
+        lightboxClose.focus();
+      });
+    }
+
+    function closeLightbox(){
+      if(lightbox.hidden) return;
+      lightbox.classList.remove("is-open");
+      document.body.classList.remove("lightbox-open");
+      closeTimer = setTimeout(()=>{
+        lightbox.hidden = true;
+        lightboxImage.src = "";
+        if(lightboxOpener) lightboxOpener.focus();
+        lightboxOpener = null;
+      }, reduce ? 0 : 360);
+    }
+
+    $$(".media-open").forEach(button=> button.addEventListener("click", ()=> openLightbox(button)));
+    lightboxClose.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", event=>{ if(event.target === lightbox) closeLightbox(); });
+    document.addEventListener("keydown", event=>{
+      if(lightbox.hidden) return;
+      if(event.key === "Escape") closeLightbox();
+      if(event.key === "Tab"){
+        event.preventDefault();
+        lightboxClose.focus();
+      }
+    });
+  }
+
   /* ---------- year ---------- */
   const yr = $(".yr"); if(yr) yr.textContent = new Date().getFullYear();
 })();
